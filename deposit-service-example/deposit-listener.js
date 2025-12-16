@@ -1,3 +1,4 @@
+require('dotenv').config()
 const StateReceiver = require('@waxio/eosio-statereceiver/src/state-receiver');
 
 const sr = new StateReceiver({

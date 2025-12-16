@@ -63,9 +63,9 @@ sudo apt install -y wget zstd tar
 - Download and install WAX Leap
 ```bash
 # Download wax-leap
-wget https://github.com/worldwide-asset-exchange/wax-blockchain/releases/download/v5.0.3wax01/wax-leap_5.0.3wax01_amd64.deb
+wget https://github.com/worldwide-asset-exchange/wax-blockchain/releases/download/ce-v1.0.3wax01/wax-spring-ce_1.3.0wax01_amd64.deb
 # Install wax-leap
-sudo apt install ./wax-leap_5.0.3wax01_amd64.deb
+sudo apt install ./wax-spring-ce_1.3.0wax01_amd64.deb
 # Verify full version of cleos
 cleos version full
 ```
@@ -99,7 +99,7 @@ b83af4851b3e   waxteam/waxnode:v5.0.3wax02  0.0.0.0:8080->8080/tcp, 0.0.0.0:8888
 - Monitor node startup
 ```bash
 # Check logs
-tail -f wax-mainnet/nodeos.log  # or wax-testnet/nodeos.log
+docker logs nodeos
 
 # Check node status
 curl http://localhost:8888/v1/chain/get_info
@@ -159,13 +159,16 @@ cd deposit-service-example
 
 # Install dependencies
 npm install
+
+# Setup env files
+cp sample.env .env 
 ```
 2. Set environment variables:
 ```bash
 # Required
-export SOCKET_ADDRESS=ws://localhost:8080    # SHIP websocket endpoint
-export EOS_ENDPOINT=http://localhost:8888    # WAX node API endpoint
-export DEBUG_STATE_RECEIVER=1 # Optional
+SOCKET_ADDRESS=ws://localhost:8080    # SHIP websocket endpoint
+EOS_ENDPOINT=http://localhost:8888    # WAX node API endpoint
+DEBUG_STATE_RECEIVER=1 # Optional
 ```
 3. Update code settings:
 - Find following code and update folloing envirements:
