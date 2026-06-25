@@ -62,10 +62,10 @@ sudo apt install -y wget zstd tar
 
 - Download and install WAX Leap
 ```bash
-# Download wax-leap
-wget https://github.com/worldwide-asset-exchange/wax-blockchain/releases/download/v5.0.3wax01/wax-leap_5.0.3wax01_amd64.deb
-# Install wax-leap
-sudo apt install ./wax-leap_5.0.3wax01_amd64.deb
+# Download wax-spring-ce
+wget https://github.com/worldwide-asset-exchange/wax-blockchain/releases/download/ce-v1.0.3wax01/wax-spring-ce_1.3.0wax01_amd64.deb
+# Install wax-spring-ce
+sudo apt install ./wax-spring-ce_1.3.0wax01_amd64.deb
 # Verify full version of cleos
 cleos version full
 ```
@@ -90,7 +90,7 @@ This command:
 ```bash
 docker ps
 CONTAINER ID   IMAGE                         PORTS                                            NAMES
-b83af4851b3e   waxteam/waxnode:v5.0.3wax02  0.0.0.0:8080->8080/tcp, 0.0.0.0:8888->8888/tcp  nodeos
+b83af4851b3e   waxteam/waxnode:ce-v1.0.3wax01  0.0.0.0:8080->8080/tcp, 0.0.0.0:8888->8888/tcp  nodeos
 # HTTP API: 8888
 # SHIP: 8080
 # P2P: 9876
@@ -152,6 +152,8 @@ More commands [here](https://developer.wax.io/build/dapp-development/setup-local
 
 ## WAX Deposit Service
 A service to monitor and process WAX token deposits from the blockchain using the State-History (SHIP) plugin.
+
+> **Not on Node.js?** This deposit listener uses SHIP (`@waxio/eosio-statereceiver`), which is JS/TS-oriented. Teams on other stacks (e.g. Java/Go) can instead **poll the chain RPC API** — walk blocks via `/v1/chain/get_block` (or `get_block_info`) and filter `eosio.token::transfer` actions to your account. This needs only port 8888 (no SHIP `-e true`, no Hyperion), at the cost of polling latency and manual fork/irreversibility handling.
 
 1. Installation
 ```bash
@@ -217,7 +219,10 @@ cp sample.env .env
 # Required WAX node endpoint (testnet or mainnet)
 NODEOS_ENDPOINT=http://localhost:8888
 
-# Chain ID (testnet or mainnet)
+# Chain ID (testnet or mainnet) — the value below is WAX TESTNET.
+#   testnet: f16b1833c747c43682f4386fca9cbb327929334a762755ebec17f6f23c9b8a12
+#   mainnet: 1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4
+# Use the mainnet chain ID when pointing at a mainnet node.
 CHAIN_ID=f16b1833c747c43682f4386fca9cbb327929334a762755ebec17f6f23c9b8a12
 
 # Withdrawal account configuration
