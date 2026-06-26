@@ -14,5 +14,8 @@
     "node-fetch": "^2.6.0",
     "util": "^0.12.1",
     "dotenv": "^8.2.0"
+  },
+  "overrides": {
+    "@babel/runtime": "^7.26.10"
   }
 }
