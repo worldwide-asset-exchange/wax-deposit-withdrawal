@@ -63,9 +63,9 @@ sudo apt install -y wget zstd tar
 - Download and install WAX Leap
 ```bash
 # Download wax-spring-ce
-wget https://github.com/worldwide-asset-exchange/wax-blockchain/releases/download/ce-v1.0.3wax01/wax-spring-ce_1.3.0wax01_amd64.deb
+wget https://github.com/worldwide-asset-exchange/wax-blockchain/releases/download/ce-v1.3.1wax01/wax-spring-ce_1.3.1wax01-ubuntu22.04_amd64.deb
 # Install wax-spring-ce
-sudo apt install ./wax-spring-ce_1.3.0wax01_amd64.deb
+sudo apt install ./wax-spring-ce_1.3.1wax01-ubuntu22.04_amd64.deb
 # Verify full version of cleos
 cleos version full
 ```
@@ -90,7 +90,7 @@ This command:
 ```bash
 docker ps
 CONTAINER ID   IMAGE                         PORTS                                            NAMES
-b83af4851b3e   waxteam/waxnode:ce-v1.0.3wax01  0.0.0.0:8080->8080/tcp, 0.0.0.0:8888->8888/tcp  nodeos
+b83af4851b3e   waxteam/waxnode:ce-v1.3.1wax01  0.0.0.0:8080->8080/tcp, 0.0.0.0:8888->8888/tcp  nodeos
 # HTTP API: 8888
 # SHIP: 8080
 # P2P: 9876
